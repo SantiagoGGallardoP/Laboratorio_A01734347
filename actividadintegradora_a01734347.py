@@ -16,10 +16,9 @@ df = pd.read_csv("https://drive.google.com/file/d/11oLcKiW8SgCOp3tGiQCYuRG7pLL_J
 
 st.markdown("The data shown below belongs to incident reports in the city of San Francisco, from the year 2018 to 2020, with details from each case such as date, day of the week, police district, neighborhood in which it happened, type of incident in category and subcategory, exact location and resolution.")
 
-# Verificar si las columnas 'Latitude' y 'Longitude' existen en el DataFrame
-if 'Latitude' in df.columns and 'Longitude' in df.columns:
-    mapa = df[['Latitude', 'Longitude']].dropna()
-    st.map(mapa)
-else:
-    st.write("Las columnas 'Latitude' y 'Longitude' no se encuentran en el DataFrame.")
+# Filtrar el DataFrame para obtener solo las columnas de interés
+mapa = df[["Latitude", "Longitude"]].dropna()
+
+# Mostrar el mapa en Streamlit
+st.map(mapa)
 
